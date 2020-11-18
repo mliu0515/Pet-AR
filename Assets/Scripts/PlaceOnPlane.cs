@@ -19,6 +19,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
         [SerializeField]
         [Tooltip("Instantiates this prefab on a plane at the touch location.")]
         GameObject m_PlacedPrefab;
+        GameObject m_plane;
 
         /// <summary>
         /// The prefab to instantiate on touch. We need to use a pet model for this.
@@ -28,11 +29,17 @@ namespace UnityEngine.XR.ARFoundation.Samples
             get { return m_PlacedPrefab; }
             set { m_PlacedPrefab = value; }
         }
-
+        //need a plane to have item physics
+        public GameObject plane
+        {
+            get { return m_plane; }
+            set { m_plane = value; }
+        }
         /// <summary>
         /// The object instantiated as a result of a successful raycast intersection with a plane.
         /// </summary>
         public GameObject spawnedObject { get; private set; }
+        public GameObject spawnedPlane { get; private set; }
 
         void Awake()
         {
@@ -74,6 +81,12 @@ namespace UnityEngine.XR.ARFoundation.Samples
                 if (spawnedObject == null)
                 {
                     spawnedObject = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
+                    
+                }
+                if (spawnedPlane == null)
+                {
+                    spawnedPlane = Instantiate(m_plane, hitPose.position, hitPose.rotation);
+
                 }
                 //else
                 //{
