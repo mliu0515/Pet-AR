@@ -7,6 +7,7 @@ public class PlaceItem : MonoBehaviour
     //Throw prefab item from the camera origin to playspace.
     public GameObject item;
     public AudioSource throwSound;
+    int inventory;
     void Start()
     {
     }
@@ -27,7 +28,10 @@ public class PlaceItem : MonoBehaviour
     void Throw()
     {
         throwSound.Play();
-        Instantiate(item, transform.position + transform.forward, Quaternion.identity);
-        // -1 in the player's item inventory of <item> if we implement that.
+        if (inventory > 1)
+        {
+            Instantiate(item, transform.position + transform.forward, Quaternion.identity);
+        }
+
     }
 }
