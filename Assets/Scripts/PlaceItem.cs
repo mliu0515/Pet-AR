@@ -7,7 +7,7 @@ public class PlaceItem : MonoBehaviour
     //Throw prefab item from the camera origin to playspace.
     public GameObject item;
     public AudioSource throwSound;
-    int inventory;
+    int inventory = 5;
     void Start()
     {
     }
