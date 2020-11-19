@@ -30,11 +30,11 @@ namespace UnityEngine.XR.ARFoundation.Samples
             set { m_PlacedPrefab = value; }
         }
         //need a plane to have item physics
-        public GameObject plane
-        {
+        //public GameObect plane
+        
             //get { return m_plane; }
             //set { m_plane = value; }
-        }
+        
         /// <summary>
         /// The object instantiated as a result of a successful raycast intersection with a plane.
         /// </summary>
