@@ -61,6 +61,7 @@ public class TapToPlaceObject : MonoBehaviour
 
     private void PlaceObject()
     {
+        //Here I kind of wanna use add force or something
         Instantiate(objectToPlace, PlacementPose.position, PlacementPose.rotation);
     }
 }
