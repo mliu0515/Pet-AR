@@ -8,6 +8,8 @@ TagManager:
   - Fire
   - playerHealth
   - PlayerHealth
+  - head
+  - looker
   layers:
   - Default
   - TransparentFX

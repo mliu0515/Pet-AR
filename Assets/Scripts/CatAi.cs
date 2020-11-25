@@ -12,15 +12,11 @@ public class CatAi : MonoBehaviour
      * Cat can interact with yarn 
      * AI must be bound by timer
     */
+    public GameObject player;
+    
+    void Start() {
+        player = GameObject.FindGameObjectWithTag("Player");
 
-    void Start()
-    {
-        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
