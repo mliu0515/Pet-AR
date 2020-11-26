@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    GameObject player;
+    GameObject target;
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        target = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = player.transform.position;
+        this.transform.position = target.transform.position;
+        if (GameObject.FindGameObjectWithTag("yarn") != null)
+        {
+            target = GameObject.FindGameObjectWithTag("yarn");
+        }
+
     }
 }

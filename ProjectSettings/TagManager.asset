@@ -4,12 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Monster
-  - Fire
-  - playerHealth
-  - PlayerHealth
+  - yarn
+  - Pet
   - head
-  - looker
   layers:
   - Default
   - TransparentFX

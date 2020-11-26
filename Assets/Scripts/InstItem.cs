@@ -8,6 +8,7 @@ public class InstItem : MonoBehaviour
     Rigidbody rb;
     public float speed = 600f;
     GameObject player;
+    float maxFallDistance = -1f;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -20,5 +21,10 @@ public class InstItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.y <= maxFallDistance)
+        {
+            Debug.Log("Item Out of bounds!");
+            Destroy(gameObject);
+        }
     }
 }

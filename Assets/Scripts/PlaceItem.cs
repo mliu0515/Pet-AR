@@ -16,7 +16,7 @@ public class PlaceItem : MonoBehaviour
         
         foreach (Touch touch in Input.touches)
         {
-            if (touch.phase == TouchPhase.Began)
+            if (touch.phase == TouchPhase.Began && GameObject.FindGameObjectsWithTag("Pet") != null)
             {
                 Debug.Log("thrown" + item.name);
                 Throw();
