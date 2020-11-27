@@ -13,6 +13,7 @@ public class TapToPlaceObject : MonoBehaviour
     // Start is called before the first frame update
     public GameObject objectToPlace;
     public GameObject placementIndicator;
+    public GameObject player; 
     private Pose PlacementPose;
     private ARRaycastManager aRRaycastManager;
     private bool placementPoseIsValid = false;
@@ -48,9 +49,9 @@ public class TapToPlaceObject : MonoBehaviour
 
     private void UpdatePlacementPose()
 	{
-        var screenCenter = Camera.current.ViewportToScreenPoint(new Vector3(0.5f, 0.5f));
-        var hits = new List<ARRaycastHit>();
-        aRRaycastManager.Raycast(screenCenter, hits, TrackableType.PlaneEstimated);
+        //var screenCenter = Camera.current.ViewportToScreenPoint(new Vector3(0.5f, 0.5f));
+        List<ARRaycastHit> hits = new List<ARRaycastHit>();
+        aRRaycastManager.Raycast(player.transform.position, hits, TrackableType.PlaneEstimated);
 
         placementPoseIsValid = hits.Count > 0;
         if (placementPoseIsValid)

@@ -32,7 +32,7 @@ public class PlaceModel : MonoBehaviour
     {
         
         //var screenCenter = Camera.current.ViewportToScreenPoint(new Vector3(0.5f, 0.5f));
-        var hits = new List<ARRaycastHit>();
+        List<ARRaycastHit> hits = new List<ARRaycastHit>();
         aRRaycastManager.Raycast(player.transform.position, hits, TrackableType.PlaneEstimated);
 
         placementPoseIsValid = hits.Count > 0;
