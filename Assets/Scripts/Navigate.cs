@@ -77,7 +77,9 @@ public class Navigate : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Food")) 
         {
-            other.gameObject.SetActive(false);
+            //other.gameObject.SetActive(false);
+            //Can I do this?
+            Destroy(GameObject.FindWithTag("Food"));
         }
     }
 

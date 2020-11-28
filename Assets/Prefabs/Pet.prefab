@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6516969481508246113}
   - component: {fileID: 1886896080839106040}
   - component: {fileID: 6897704649124028185}
+  - component: {fileID: -7497383175232225177}
   m_Layer: 0
   m_Name: Pet
   m_TagString: Pet
@@ -113,3 +114,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-7497383175232225177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5116488942757621360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fea6cb163db63854ca968d31a713baed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
