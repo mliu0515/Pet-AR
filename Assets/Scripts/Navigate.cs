@@ -16,10 +16,13 @@ public class Navigate : MonoBehaviour
     //Using a collider, once a collision with food/item is detected, deactivate the food item.
     private Vector3 foodPosition;
     private GameObject foodItem;
-
+    public float speed;
+    private Vector3 start;
+    private Vector3 dirNormalized;
+    private bool dirCalculated = false;
     void Start()
     {
-        
+        start = transform.position;
     }
 
     // Update is called once per frame
@@ -43,7 +46,10 @@ public class Navigate : MonoBehaviour
     //deactivate the food
     void interactWithItem()
     {
-        
+        if (foodPosition != null && Vector3.Distance(foodPosition, transform.position) > 0)
+        {
+            transform.position = transform.position + dirNormalized * speed * Time.deltaTime;
+        }
     }
 
     //check if a food item is instantiated. If yes, resturn true and stor it in foodItem
@@ -54,10 +60,25 @@ public class Navigate : MonoBehaviour
         {
             foodItem = GameObject.FindWithTag("Food");
             foodPosition = foodItem.transform.position;
+            if (dirCalculated == false)
+            {
+                dirNormalized = (start - foodPosition).normalized;
+                dirCalculated = true;
+            }
+            
             return true;
         } 
+        dirCalculated = false;
         return false;
-        
+    }
+
+    //The collider thing
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Food")) 
+        {
+            other.gameObject.SetActive(false);
+        }
     }
 
 }
