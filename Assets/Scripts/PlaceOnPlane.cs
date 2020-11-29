@@ -81,7 +81,8 @@ namespace UnityEngine.XR.ARFoundation.Samples
                 if (spawnedObject == null)
                 {
                     spawnedObject = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
-                    
+                    //GameObject player = GameObject.FindGameObjectWithTag("Player");
+                    //PlaceItem placer = player.AddComponent<PlaceItem>();
                 }
                 /*if (spawnedPlane == null)
                 {
