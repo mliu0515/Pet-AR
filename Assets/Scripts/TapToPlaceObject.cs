@@ -10,13 +10,14 @@ using System;
 //So like food and stuff that is going to be thrown to the pet. 
 public class TapToPlaceObject : MonoBehaviour
 {
-    // Start is called before the first frame update
     public GameObject objectToPlace;
     public GameObject placementIndicator;
     public GameObject player; 
     private Pose PlacementPose;
     private ARRaycastManager aRRaycastManager;
     private bool placementPoseIsValid = false;
+
+    // Start is called before the first frame update
     void Start()
     {
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();

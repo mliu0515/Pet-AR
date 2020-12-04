@@ -20,6 +20,8 @@ public class Navigate : MonoBehaviour
     private Vector3 start;
     private Vector3 dirNormalized;
     private bool dirCalculated = false;
+    private int fullness = 0;
+    public int maxFoodIntake;
     void Start()
     {
         start = transform.position;
@@ -28,11 +30,11 @@ public class Navigate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        detectFood();
+        walkToFood();
     }
 
     //detect food, store the position of the food in foodPosition
-    void detectFood()
+    void walkToFood()
     {
         if (foodExists()) 
         {
@@ -46,17 +48,18 @@ public class Navigate : MonoBehaviour
     //deactivate the food
     void interactWithItem()
     {
-        if (foodPosition != null && Vector3.Distance(foodPosition, transform.position) > 0)
+        if (dirCalculated == true && foodPosition != null && Vector3.Distance(foodPosition, transform.position) > 0)
         {
+            //I might neet to fix (Vector3.Distance(foodPosition, transform.position) > 0) part tho. 
             transform.position = transform.position + dirNormalized * speed * Time.deltaTime;
         }
     }
 
-    //check if a food item is instantiated. If yes, resturn true and stor it in foodItem
+    //check if a food item is instantiated. If yes, resturn true and store it in foodItem
     //else return false
     private bool foodExists()
     {
-        if (GameObject.Find("FoodItem") != null)
+        if (GameObject.FindWithTag("Food") != null)
         {
             foodItem = GameObject.FindWithTag("Food");
             foodPosition = foodItem.transform.position;
@@ -77,9 +80,17 @@ public class Navigate : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Food")) 
         {
+            if (fullness == maxFoodIntake)
+            {
+                Debug.Log("The pet it full you can't feed it anymore");
+            }
+            else {
+                fullness += 1;
+                Debug.Log("The pet just ate the food");
+            }
             //other.gameObject.SetActive(false);
-            //Can I do this?
-            Destroy(GameObject.FindWithTag("Food"));
+            dirCalculated = false;
+            Destroy(other.gameObject);
         }
     }
 
