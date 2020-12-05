@@ -1,6 +1,8 @@
 # Pet-AR
 Basic merge done, UI needed to throw item and other mechanics. 
-Known issues: 
-Pet placed at the player position, it needs to be at the tap placement 
-Cat look rotation allows for weird angles
-Navmesh needed
+
+TODO:
+ui
+Dynamic Navmesh needed (pet area expands as more room is found so navmesh must be expanded in that area) 
+grass on the arplane? 
+more pets
