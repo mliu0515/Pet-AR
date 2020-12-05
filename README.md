@@ -1,4 +1,6 @@
 # Pet-AR
-2020/11/15
-
-So I tried to figure out how to place object onto a plane. I think this can be used to spawn an item. But I still haven't figure out how to spwan the animal itself and how to let the animal interact with the item. 
+Basic merge done, UI needed to throw item and other mechanics. 
+Known issues: 
+Pet placed at the player position, it needs to be at the tap placement 
+Cat look rotation allows for weird angles
+Navmesh needed
