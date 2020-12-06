@@ -8,6 +8,7 @@ TagManager:
   - Pet
   - head
   - Target
+  - Food
   layers:
   - Default
   - TransparentFX
