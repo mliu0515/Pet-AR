@@ -6,6 +6,9 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using System;
 
+//https://www.youtube.com/watch?v=xguiSueY1Lw&ab_channel=DineshPunni
+//^^ it's from this youtube video 
+
 //So yea this script is used for placing item onto the scene.
 //So like food and stuff that is going to be thrown to the pet. 
 [RequireComponent(typeof(ARRaycastManager))]
@@ -14,9 +17,10 @@ public class TapToPlaceObject : MonoBehaviour
     public GameObject objectToPlace;
     public GameObject Animal;
     public GameObject placementIndicator;
+
+    private ARRaycastManager aRRaycastManager;
     private Pose PlacementPose;
     private Vector2 touchPosition;
-    private ARRaycastManager aRRaycastManager;
     private GameObject spawnObject;
     private List<ARRaycastHit> hits = new List<ARRaycastHit>();
     private bool placementPoseIsValid = false;
@@ -24,7 +28,7 @@ public class TapToPlaceObject : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        aRRaycastManager = FindObjectOfType<ARRaycastManager>();
+        aRRaycastManager = GetComponent<ARRaycastManager>();
     }
 
     // Update is called once per frame
@@ -36,11 +40,16 @@ public class TapToPlaceObject : MonoBehaviour
         }
         if (aRRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
         {
-            var hitPost = hits[0].pose;
-            PlacementPose = hitPost;
+            var hitPose = hits[0].pose;
+            PlacementPose = hitPose;
             placementPoseIsValid = hits.Count > 0;
             UpdatePlacementIndicator();
-            PlaceObject();
+            //PlaceObject();
+            if (animalExists == false) {
+                Instantiate(Animal, PlacementPose.position, PlacementPose.rotation);
+                Debug.Log("Here's your animal!");
+                animalExists = true;
+            }
         }
         // UpdatePlacementIndicator();
     }
@@ -78,15 +87,9 @@ public class TapToPlaceObject : MonoBehaviour
         touchPosition = default;
         return false;
 	}
-
+    /*
     private void PlaceObject()
     {
-        if (animalExists == false)
-        {
-            Instantiate(Animal, PlacementPose.position, PlacementPose.rotation);
-            Debug.Log("Here's your animal!");
-            animalExists = true;
-        }
         else if (spawnObject == null)
         {
             spawnObject = Instantiate(objectToPlace, PlacementPose.position, PlacementPose.rotation);
@@ -95,4 +98,5 @@ public class TapToPlaceObject : MonoBehaviour
             Debug.Log("You already threw an item");
         }
     }
+    */
 }

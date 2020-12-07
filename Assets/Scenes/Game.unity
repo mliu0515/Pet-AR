@@ -1954,7 +1954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efedc4036aa430e4984fa51524eb5601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelToPlace: {fileID: 4241156052328170800, guid: 753a3dba6b8c20746a89c1c0e07dcd92,
+  modelToPlace: {fileID: 526927965496758085, guid: cd8be34151adf574c9537f4b9fcb53ca,
     type: 3}
   player: {fileID: 852161665}
 --- !u!4 &936646432
@@ -1965,8 +1965,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936646430}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 311}
+  m_LocalScale: {x: 1, y: 1, z: 3.756}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -2676,7 +2676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToPlace: {fileID: 0}
-  Animal: {fileID: 4241156052328170800, guid: 753a3dba6b8c20746a89c1c0e07dcd92, type: 3}
+  Animal: {fileID: 526927965496758085, guid: cd8be34151adf574c9537f4b9fcb53ca, type: 3}
   placementIndicator: {fileID: 617234893}
 --- !u!4 &1105126567
 Transform:
@@ -3897,7 +3897,7 @@ Transform:
   m_GameObject: {fileID: 1459835332}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.68789, y: 1, z: 1}
   m_Children:
   - {fileID: 852161670}
   - {fileID: 1216207674}
@@ -4857,7 +4857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
