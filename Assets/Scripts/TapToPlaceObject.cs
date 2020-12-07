@@ -25,6 +25,7 @@ public class TapToPlaceObject : MonoBehaviour
     private List<ARRaycastHit> hits = new List<ARRaycastHit>();
     private bool placementPoseIsValid = false;
     private bool animalExists = false;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -49,6 +50,8 @@ public class TapToPlaceObject : MonoBehaviour
                 Instantiate(Animal, PlacementPose.position, PlacementPose.rotation);
                 Debug.Log("Here's your animal!");
                 animalExists = true;
+            } else {
+                spawnObject = Instantiate(objectToPlace, PlacementPose.position, PlacementPose.rotation);
             }
         }
         // UpdatePlacementIndicator();
@@ -87,6 +90,7 @@ public class TapToPlaceObject : MonoBehaviour
         touchPosition = default;
         return false;
 	}
+    
     /*
     private void PlaceObject()
     {
@@ -99,4 +103,5 @@ public class TapToPlaceObject : MonoBehaviour
         }
     }
     */
+    
 }
