@@ -21,10 +21,12 @@ public class InstItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (transform.position.y <= maxFallDistance)
         {
             Debug.Log("Item Out of bounds!");
             Destroy(gameObject);
         }
+        */
     }
 }

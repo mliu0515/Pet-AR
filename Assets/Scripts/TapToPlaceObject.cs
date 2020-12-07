@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 //using UnityEngine.Experimental.XR
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.AI;
 using System;
 
 //So yea this script is used for placing item onto the scene.
@@ -31,9 +32,9 @@ public class TapToPlaceObject : MonoBehaviour
     void Update()
     {
         if (!UpdatePlacementPose(out Vector2 touchPosition))
-        {
+        
             return;
-        }
+        
         if (aRRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
         {
             var hitPost = hits[0].pose;
@@ -43,6 +44,7 @@ public class TapToPlaceObject : MonoBehaviour
             PlaceObject();
         }
         // UpdatePlacementIndicator();
+
     }
 
     private void UpdatePlacementIndicator()
@@ -69,7 +71,7 @@ public class TapToPlaceObject : MonoBehaviour
 		// {
         //     PlacementPose = hits[0].pose;
 		// }
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Ended)
         {
             touchPosition = Input.GetTouch(0).position;
             return true;
@@ -81,18 +83,27 @@ public class TapToPlaceObject : MonoBehaviour
 
     private void PlaceObject()
     {
+        if (spawnObject == null && animalExists == true)
+        {
+            spawnObject = Instantiate(objectToPlace, PlacementPose.position, PlacementPose.rotation);
+        }
+        else
+        {
+            Debug.Log("You already threw an item");
+        }
+        
         if (animalExists == false)
         {
+            //sneak edit to make it work with nav agent
+            //Vector3 newPos = new Vector3(PlacementPose.position.x, .5f, PlacementPose.position.z);
             Instantiate(Animal, PlacementPose.position, PlacementPose.rotation);
             Debug.Log("Here's your animal!");
             animalExists = true;
         }
-        else if (spawnObject == null)
+        else
         {
-            spawnObject = Instantiate(objectToPlace, PlacementPose.position, PlacementPose.rotation);
+            Debug.Log("You already have a pet");
         }
-        else {
-            Debug.Log("You already threw an item");
-        }
+        
     }
 }

@@ -16,6 +16,7 @@ public class CatAi : MonoBehaviour
     bool validPath;
     Vector3 moveTarget;
     GameObject foundItem;
+    
 
     public enum State
     {
@@ -24,12 +25,12 @@ public class CatAi : MonoBehaviour
     public State catState;
     void Start() 
     {
+        navMeshAgent = GetComponent<NavMeshAgent>();
         catState = State.IDLING;
         particles = particles.GetComponent<ParticleSystem>();
         anim = GetComponent<Animator>();
         lookTarget = GameObject.FindGameObjectWithTag("Target").GetComponent<Target>();
         StartCoroutine(LookAtPlayer());
-        navMeshAgent = GetComponent<NavMeshAgent>();
         path = new NavMeshPath();
     }
 
@@ -71,7 +72,7 @@ public class CatAi : MonoBehaviour
     IEnumerator LookAtPlayer()  //look at player for 3 seconds and then go back to idling 
     {
         lookTarget.target = GameObject.FindGameObjectWithTag("Player");
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         doneLooking = true;
         Debug.Log("I am done looking at player!");
         
@@ -135,7 +136,7 @@ public class CatAi : MonoBehaviour
 
         }
         Debug.Log("I am done using the Item!");
-        if (particles.isPlaying) particles.Pause();
+        if (particles.isPlaying) particles.Clear(); particles.Pause();
         catState = State.IDLING;
 
     }

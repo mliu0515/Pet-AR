@@ -9,6 +9,8 @@ TagManager:
   - head
   - Target
   - Food
+  - Plane
+  - ARPlane
   layers:
   - Default
   - TransparentFX
