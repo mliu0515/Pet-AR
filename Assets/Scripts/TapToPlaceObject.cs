@@ -14,14 +14,26 @@ public class TapToPlaceObject : MonoBehaviour
 {
     public GameObject objectToPlace;
     public GameObject Animal;
+    public GameObject Toilet;
+    public GameObject Rock;
     public GameObject placementIndicator;
+    public GameObject Yarn;
+    public GameObject Fish;
+
+
     private Pose PlacementPose;
     private Vector2 touchPosition;
     private ARRaycastManager aRRaycastManager;
     private GameObject spawnObject;
+    private GameObject spawnAnimal;
     private List<ARRaycastHit> hits = new List<ARRaycastHit>();
     private bool placementPoseIsValid = false;
     private bool animalExists = false;
+    private bool objExists = false;
+
+
+    public int objNumber = 3;
+    public int modelNumber;
     // Start is called before the first frame update
     void Awake()
     {
@@ -83,9 +95,19 @@ public class TapToPlaceObject : MonoBehaviour
 
     private void PlaceObject()
     {
-        if (spawnObject == null && animalExists == true)
+        Debug.Log("Model number is " + modelNumber);
+        Debug.Log("animalExists is " + animalExists);
+        if (spawnObject == null && animalExists == true && objExists == false)
         {
-            spawnObject = Instantiate(objectToPlace, PlacementPose.position, PlacementPose.rotation);
+            if (objNumber == 0) {
+                spawnObject = Instantiate(Yarn, PlacementPose.position, PlacementPose.rotation);
+                objExists = true;
+            } else if (objNumber == 1) {
+                spawnObject = Instantiate(Fish, PlacementPose.position, PlacementPose.rotation);
+                objExists = true;
+            } else {
+                objExists = false;
+            }
         }
         else
         {
@@ -96,7 +118,17 @@ public class TapToPlaceObject : MonoBehaviour
         {
             //sneak edit to make it work with nav agent
             //Vector3 newPos = new Vector3(PlacementPose.position.x, .5f, PlacementPose.position.z);
-            Instantiate(Animal, PlacementPose.position, PlacementPose.rotation);
+            if (modelNumber == 0) {
+                Debug.Log("Placing cat!");
+               spawnAnimal = Instantiate(Animal, PlacementPose.position, PlacementPose.rotation);
+            } else if (modelNumber == 1) {
+                Debug.Log("placing toilet");
+                spawnAnimal = Instantiate(Toilet, PlacementPose.position, PlacementPose.rotation);
+            } else {
+                Debug.Log("placing rock");
+                spawnAnimal = Instantiate(Rock, PlacementPose.position, PlacementPose.rotation);
+            }
+
             Debug.Log("Here's your animal!");
             animalExists = true;
         }
@@ -105,5 +137,18 @@ public class TapToPlaceObject : MonoBehaviour
             Debug.Log("You already have a pet");
         }
         
+    }
+
+    public void RemoveCurrentPet() {
+        Debug.Log("Removing current pet");
+        Destroy(spawnAnimal);
+        Destroy(spawnObject);
+        animalExists = false;
+    }
+
+    public void RemoveCurrentItem() {
+        Destroy(spawnObject);
+        objExists = false;
+
     }
 }
