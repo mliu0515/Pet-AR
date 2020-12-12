@@ -19,6 +19,8 @@ public class TapToPlaceObject : MonoBehaviour
     public GameObject placementIndicator;
     public GameObject Yarn;
     public GameObject Fish;
+    public GameObject Poop;
+    public GameObject Ball;
 
 
     private Pose PlacementPose;
@@ -32,7 +34,7 @@ public class TapToPlaceObject : MonoBehaviour
     private bool objExists = false;
 
 
-    public int objNumber = 3;
+    public int objNumber = 10;
     public int modelNumber;
     // Start is called before the first frame update
     void Awake()
@@ -51,6 +53,12 @@ public class TapToPlaceObject : MonoBehaviour
         {
             var hitPost = hits[0].pose;
             PlacementPose = hitPost;
+
+            //rotate 180
+            Vector3 rot = PlacementPose.rotation.eulerAngles;
+            rot = new Vector3(rot.x,rot.y+180,rot.z);
+            PlacementPose.rotation = Quaternion.Euler(rot);
+
             placementPoseIsValid = hits.Count > 0;
             UpdatePlacementIndicator();
             PlaceObject();
@@ -105,7 +113,14 @@ public class TapToPlaceObject : MonoBehaviour
             } else if (objNumber == 1) {
                 spawnObject = Instantiate(Fish, PlacementPose.position, PlacementPose.rotation);
                 objExists = true;
-            } else {
+            } else if (objNumber == 2) {
+                spawnObject = Instantiate(Ball, PlacementPose.position, PlacementPose.rotation);
+                objExists = true;
+            } else if (objNumber == 3) {
+                spawnObject = Instantiate(Poop, PlacementPose.position, PlacementPose.rotation);
+                objExists = true;
+            }
+             else {
                 objExists = false;
             }
         }

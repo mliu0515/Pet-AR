@@ -33,4 +33,18 @@ public class InventoryMenu : MonoBehaviour
         Debug.Log("Selected fish");
         InvPanel.SetActive(false);
     }
+
+    public void ChooseThird() {
+        ObjectController.objNumber = 2;
+        ObjectController.RemoveCurrentItem();
+        Debug.Log("Selected poop");
+        InvPanel.SetActive(false);
+    }
+
+    public void ChooseFourth() {
+        ObjectController.objNumber = 3;
+        ObjectController.RemoveCurrentItem();
+        Debug.Log("Selected ball");
+        InvPanel.SetActive(false);
+    }
 }
